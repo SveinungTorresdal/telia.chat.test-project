@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' design.swedbankpay.com payex.humany.net wds.ace.teliacompany.com fonts.googleapis.com fonts.gstatic.com fonts.googleapis.com;
+      "
+    >
+    <meta charset="utf-8" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://design.swedbankpay.com/v/5.0.1/scripts/dg.js" as="script" />
+    <link rel="stylesheet" href="https://design.swedbankpay.com/v/5.0.2/styles/dg-style.css" />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <a href="//payex.humany.net/demo-one-widget-inline">Customer service</a>
+    
+    <script src="main.js"></script>
+
+    <script src="https://wds.ace.teliacompany.com/wds/instances/JvbKjqJt17/ACEWebSDK.min.js" defer></script>
+    <script src="https://wds.ace.teliacompany.com/wds/instances/JvbKjqJt17/ACEChat.min.js" defer></script>
+  </body>
+</html>
