@@ -1,0 +1,56 @@
+// No styles yet.
+
+$gap: 1rem;
+$breakpoints: ("sm": 576px, "md": 768px, "lg": 992px, "xl": 1200px, "xxl": 1600px);
+
+.grid {
+    display: grid;
+    column-gap: $gap;
+    row-gap: $gap;
+}
+
+.grid-cols-auto {
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+}
+
+@for $i from 1 through 8 {
+    @if $i == 1 {
+        .grid-cols {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+    .grid-cols-#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+    }
+
+    @each $name, $min-width in $breakpoints {
+        @media only screen and (min-width: $min-width) {
+            @if $i == 1 {
+                .grid-cols-#{$name} {
+                    grid-template-columns: repeat($i, 1fr);
+                }
+            }
+
+            .grid-cols-#{$name}-#{$i} {
+                grid-template-columns: repeat($i, 1fr);
+            }
+        }
+    }
+}
+
+.grid-row-equals {
+    grid-auto-rows: 1fr;
+}
+@each $name, $min-width in $breakpoints {
+    @media only screen and (min-width: $min-width) {
+        .grid-row-#{$name}-equals {
+            grid-auto-rows: 1fr;
+        }
+    }
+}
+
+.slab {
+    &.slab-border-primary {
+        border-top: 4px solid #FDC129;
+    }
+}

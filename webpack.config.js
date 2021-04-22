@@ -2,10 +2,19 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const base = {
   entry: './src/main.js',
+  devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "payex.humany.net"
+    }
+  },
   devtool: 'cheap-module-source-map',
+  devServer: {
+    https: true
+  },
   module: {
     rules: [
       {
@@ -19,14 +28,14 @@ const base = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          'vue-style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -42,6 +51,10 @@ const base = {
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "main.css",
+      chunkFilename: "[name].css"
+    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Telia Chat Demo',
